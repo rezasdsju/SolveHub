@@ -1,0 +1,39 @@
+x=[[1,2,17],
+   [13,5,8],
+   [4,7,9],
+   [4,15,6],
+   [9,15,19],
+   [11,4,10],
+   [12,4,7],
+   [6,8,10],
+   [2,12,19]]
+count=0
+row_max={}
+for i in range(len(x)):
+    maxxi=x[i][0]
+    position=[i,0]
+    for j in range(len(x[0])):
+        if x[i][j]>=maxxi:
+            maxxi=x[i][j]
+            position=(i,j)
+    row_max[position]=maxxi
+column_max={}
+for i in range(len(x[0])):
+    maxxis=x[0][i]
+    position=(0,i)
+    for j in range(len(x)):
+        if x[j][i]>=maxxis:
+            maxxis=x[j][i]
+            position=(j,i)
+    column_max[position]=maxxis   
+print('row_max:',row_max)
+print('column_max:',column_max)
+print()
+count=0
+for key,value in column_max.items():
+    if key in row_max:
+        #print('Common key:',key)
+        print(f"Dominant cell: value={value} ,position={key}")
+        count+=1
+print()
+print('Number of Dominant cell:',count)
